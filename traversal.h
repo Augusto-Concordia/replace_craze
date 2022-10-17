@@ -1,8 +1,18 @@
+// Assignment #1 - COMP 348, F2022
+// Augusto M. Pinheiro - 40208080
+
 #pragma once
 
 #include <sys/types.h>
 #include <stdio.h>
 
-void find_files(const char* rootName, FILE* found[], char* fileNames[], u_int64_t* foundNumb);
+#include "cfile.h"
 
-const int is_invalid_directory(const char* dirName);
+//Traverses the current directory and looks for .txt files
+void find_files(const char pathStart[], CFILE* files[], int* foundNumb);
+
+//checks if the testing directory is an invalid folder and if it ends with the correct extension
+const int is_invalid_folder(const char* folderName);
+
+//checks if the testing directory is an invalid file and if it ends with the correct extension
+const int is_invalid_file(const char* fileName);

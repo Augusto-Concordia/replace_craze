@@ -79,14 +79,17 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <RemoteCCompileToolExe>gcc</RemoteCCompileToolExe>
     <WSLPath>default</WSLPath>
+    <TargetName>replace_craze</TargetName>
   </PropertyGroup>
   <ItemGroup>
+    <ClCompile Include="cfile.c" />
     <ClCompile Include="replace.c" />
     <ClCompile Include="report.c" />
     <ClCompile Include="text.c" />
     <ClCompile Include="traversal.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="cfile.h" />
     <ClInclude Include="report.h" />
     <ClInclude Include="text.h" />
     <ClInclude Include="traversal.h" />

@@ -1,5 +1,11 @@
+// Assignment #1 - COMP 348, F2022
+// Augusto M. Pinheiro - 40208080
+
 #pragma once
 
 #include <stdio.h>
 
-void process(FILE* files[], const u_int64_t foundQty, const char* tokenToUppercase, u_int64_t changeNumb[]);
+#include "cfile.h"
+
+//Reads each file and replaces the found token by its uppercase version
+void process(CFILE* files[], const int foundQty, const char* tokenToUppercase);

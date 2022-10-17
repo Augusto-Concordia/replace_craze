@@ -1,3 +1,9 @@
+// Assignment #1 - COMP 348, F2022
+// Augusto M. Pinheiro - 40208080
+
 #pragma once
 
-void print_report(const int foundFileNames, const char* fileNames, const int* changedNumb);
+#include "cfile.h"
+
+//Prints a summary of the report to the console
+void print_report(const char* target, const int foundFileNumb, CFILE * files[]);
