@@ -2,8 +2,4 @@
 
 #include <stdio.h>
 
-void process(FILE* files[], const int l, const char* tokenToUppercase);
-
-int min(int a, int b);
-
-void strupr(char* str);
+void process(FILE* files[], const u_int64_t foundQty, const char* tokenToUppercase, u_int64_t changeNumb[]);

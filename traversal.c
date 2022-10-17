@@ -1,23 +1,13 @@
 #define _GNU_SOURCE
 
 #include <stdio.h>
-#include <stdlib.h>
 #include <dirent.h>
 #include <string.h>
-#include <unistd.h>
-#include <errno.h>
 
 #include "traversal.h"
 
-void find_files(const char* rootName, FILE* found[])
+void find_files(const char* rootName, FILE* found[], char* fileNames[], u_int64_t* foundNumb)
 {	
-	int start = 0;
-
-	find_files_directory(rootName, found, &start);
-}
-
-void find_files_directory(const char* rootName, FILE* found[], int* n)
-{
 	DIR* p_rootDir = opendir(rootName);
 
 	if (p_rootDir == NULL)
@@ -34,7 +24,7 @@ void find_files_directory(const char* rootName, FILE* found[], int* n)
 		if (p_dirEntry->d_type == DT_DIR)
 		{
 			chdir(p_dirEntry->d_name);
-			find_files_directory(".", found, n);
+			find_files(".", found, foundNumb, fileNames);
 			chdir("..");
 			continue;
 		}
@@ -43,9 +33,10 @@ void find_files_directory(const char* rootName, FILE* found[], int* n)
 
 		if (file == NULL) continue;
 
-		found[*n] = file;
+		found[*foundNumb] = file;
+		fileNames[*foundNumb] = p_dirEntry->d_name;
 
-		(*n)++;
+		(*foundNumb)++;
 	}
 
 	closedir(p_rootDir);
@@ -53,5 +44,7 @@ void find_files_directory(const char* rootName, FILE* found[], int* n)
 
 const int is_invalid_directory(const char* dirName)
 {
-	return !strcmp(dirName, ".") || !strcmp(dirName, "..") || !strcmp(dirName, "ass_1.out");
+	u_int16_t dir_name_length = strlen(dirName);
+
+	return !strcmp(dirName, ".") || !strcmp(dirName, "..") || (dirName[dir_name_length] == '.' && dirName[dir_name_length - 1] == 't' && dirName[dir_name_length - 2] == 't' && dirName[dir_name_length - 3] == 'x' && dirName[dir_name_length - 4] == 't');
 }

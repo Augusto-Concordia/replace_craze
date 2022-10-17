@@ -60,6 +60,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>WSL2_1_0</PlatformToolset>
+    <UseCompiler>True</UseCompiler>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <UseDebugLibraries>false</UseDebugLibraries>
@@ -77,16 +78,16 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <RemoteCCompileToolExe>gcc</RemoteCCompileToolExe>
-    <WSLPath>Ubuntu-22.04</WSLPath>
+    <WSLPath>default</WSLPath>
   </PropertyGroup>
   <ItemGroup>
-    <ClCompile Include="list.c" />
     <ClCompile Include="replace.c" />
+    <ClCompile Include="report.c" />
     <ClCompile Include="text.c" />
     <ClCompile Include="traversal.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="list.h" />
+    <ClInclude Include="report.h" />
     <ClInclude Include="text.h" />
     <ClInclude Include="traversal.h" />
   </ItemGroup>
